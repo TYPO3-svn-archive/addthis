@@ -4,13 +4,12 @@
 		<langDisable>1</langDisable>
 	</meta>
 	<sheets>
-		<sDEF>
+		<common>
 			<ROOT>
-				<TCEforms>
-					<sheetTitle>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform</sheetTitle>
-					<cshFile>LLL:EXT:addthis/Resources/Private/Language/locallang_csh_flexform.xml</cshFile>
-				</TCEforms>
 				<type>array</type>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.common</sheetTitle>
+				</TCEforms>
 				<el>
 					<settings.style>
 						<TCEforms>
@@ -33,6 +32,25 @@
 							</config>
 						</TCEforms>
 					</settings.label>
+					<settings.url>
+						<TCEforms>
+							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.url</label>
+							<config>
+								<type>input</type>
+								<max>255</max>
+							</config>
+						</TCEforms>
+					</settings.url>
+					
+					<settings.email_template>
+						<TCEforms>
+							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.email_template</label>
+							<config>
+								<type>input</type>
+								<max>255</max>
+							</config>
+						</TCEforms>
+					</settings.email_template>
 					<settings.services_exclude>
 						<TCEforms>
 							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.services_exclude</label>
@@ -66,6 +84,39 @@
 							</config>
 						</TCEforms>
 					</settings.services_expanded>
+					
+					<settings.ui_language>
+						<TCEforms>
+							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.ui_language</label>
+							<config>
+								<type>select</type>
+								<itemsProcFunc>tx_Addthis_ConfigReader->languages</itemsProcFunc>
+								<size>1</size>
+								<default>de</default>
+								<maxitems>1</maxitems>
+							</config>
+						</TCEforms>
+					</settings.ui_language>
+					
+					<settings.data_track_clickback>
+						<TCEforms>
+							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.data_track_clickback</label>
+							<config>
+								<type>check</type>
+								<default>1</default>
+							</config>
+						</TCEforms>
+					</settings.data_track_clickback>
+				</el>
+			</ROOT>
+		</common>
+		<extended>
+			<ROOT>
+				<type>array</type>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.extended</sheetTitle>
+				</TCEforms>
+				<el>
 					<settings.ui_click>
 						<TCEforms>
 							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.ui_click</label>
@@ -83,17 +134,51 @@
 							</config>
 						</TCEforms>
 					</settings.ui_delay>
-					<settings.ui_language>
+					<settings.title>
 						<TCEforms>
-							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.ui_language</label>
+							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.title</label>
 							<config>
-								<type>select</type>
-								<itemsProcFunc>tx_Addthis_ConfigReader->languages</itemsProcFunc>
-								<size>1</size>
-								<maxitems>1</maxitems>
+								<type>input</type>
+								<max>255</max>
 							</config>
 						</TCEforms>
-					</settings.ui_language>
+					</settings.title>
+					<settings.description>
+						<TCEforms>
+							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.description</label>
+							<config>
+								<type>input</type>
+								<max>255</max>
+							</config>
+						</TCEforms>
+					</settings.description>
+					<settings.swfurl>
+						<TCEforms>
+							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.swfurl</label>
+							<config>
+								<type>input</type>
+								<max>255</max>
+							</config>
+						</TCEforms>
+					</settings.swfurl>
+					<settings.width>
+						<TCEforms>
+							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.width</label>
+							<config>
+								<type>input</type>
+								<eval>int</eval>
+							</config>
+						</TCEforms>
+					</settings.width>
+					<settings.height>
+						<TCEforms>
+							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.height</label>
+							<config>
+								<type>input</type>
+								<eval>int</eval>
+							</config>
+						</TCEforms>
+					</settings.height>
 					<settings.ui_offset_top>
 						<TCEforms>
 							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.ui_offset_top</label>
@@ -139,18 +224,8 @@
 							</config>
 						</TCEforms>
 					</settings.ui_cobrand>
-					<settings.data_track_clickback>
-						<TCEforms>
-							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.data_track_clickback</label>
-							<config>
-								<type>check</type>
-								<default>1</default>
-							</config>
-						</TCEforms>
-					</settings.data_track_clickback>
-					
 				</el>
 			</ROOT>
-		</sDEF>
+		</extended>
 	</sheets>
 </T3DataStructure>

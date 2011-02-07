@@ -37,18 +37,22 @@ class Tx_AddThis_CodeGeneratorTest extends tx_phpunit_testcase {
 	 * @test
 	 */
 	public function getConfigJs() {
-		$this->config->setSettings ( array ('data_track_clickback' => true ) );
+		$this->config->setUsername ( 'test' );
+		$this->config->setSettings ( array ('data_track_clickback' => true,'url' => 'www' ) );
 		$code = $this->codeGenerator->getConfigJs ();
-		$this->assertContains ( '{"data_track_clickback":true};', $code );
+		$this->assertContains ( '{"data_track_clickback":true', $code );
+		$this->assertContains ( 'test', $code );
+		$this->assertContains ( 'var addthis_config', $code );
+		$this->assertContains ( 'var addthis_share', $code );
 	}
+
 	/**
 	 * test method createJsImport
 	 * @test
 	 */
 	public function getJsImport() {
-		$this->config->setUsername ( 'test' );
 		$code = $this->codeGenerator->getJsImport ();
-		$this->assertContains ( 'addthis_widget.js#username=test', $code );
+		$this->assertContains ( 'addthis_widget.js', $code );
 	}
 	/**
 	 * test method getHtmlCode

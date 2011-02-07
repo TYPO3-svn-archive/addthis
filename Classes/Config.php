@@ -8,6 +8,10 @@ class Tx_Addthis_Config {
 	 * @var array
 	 */
 	private $jsConfig = array();
+	/**
+	 * @var array
+	 */
+	private $jsShare = array();
 	/** 
 	 * account name
 	 * @var string 
@@ -21,6 +25,7 @@ class Tx_Addthis_Config {
 	 * @param array $settings
 	 */
 	public function setSettings(array $settings = array() ){
+		$config_keys = array();
 		$config_keys[] = 'data_track_clickback';
 		$config_keys[] = 'ui_language';
 		$config_keys[] = 'ui_cobrand';
@@ -35,10 +40,24 @@ class Tx_Addthis_Config {
 		$config_keys[] = 'ui_header_background';
 		$config_keys[] = 'ui_cobrand';
 		foreach($settings as $key =>$value){
-			if(in_array($key,$config_keys)){
+			if(in_array($key,$config_keys) && !empty($value)){
 				$this->jsConfig[$key] = $value;
 			}
 		}
+		$share_keys = array();
+		$share_keys[] = 'url';
+		$share_keys[] = 'title';
+		$share_keys[] = 'description';
+		$share_keys[] = 'swfurl';
+		$share_keys[] = 'width';
+		$share_keys[] = 'height';
+		$share_keys[] = 'email_template';
+		foreach($settings as $key =>$value){
+			if(in_array($key,$share_keys) && !empty($value)){
+				$this->jsShare[$key] = $value;
+			}
+		}
+		
 		if(isset($settings['style'])){
 			$this->setStyle(base64_decode($settings['style']));
 		}
@@ -64,7 +83,7 @@ class Tx_Addthis_Config {
 		$this->username = $username;
 	}
 	/**
-	 * @return the $style
+	 * @return array $style
 	 */
 	public function getStyle() {
 		return $this->style;
@@ -76,6 +95,14 @@ class Tx_Addthis_Config {
 	public function setStyle($style) {
 		$this->style = $style;
 	}
+	/**
+	 * @return array $jsShare
+	 */
+	public function getJsShare() {
+		return $this->jsShare;
+	}
+
+
 
 
 	

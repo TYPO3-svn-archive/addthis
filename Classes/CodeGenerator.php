@@ -20,9 +20,14 @@ class Tx_Addthis_CodeGenerator {
 	 */
 	public function getConfigJs() {
 		$config =  $this->config->getJsConfig();
+		$config['username'] = $this->config->getUsername();
 		$code = '';
 		if(!empty($config)){
 			$code = 'var addthis_config = ' . json_encode ($config) . ';';
+		}
+		$config =  $this->config->getJsShare();
+		if(!empty($config)){
+			$code .= 'var addthis_share = ' . json_encode ($config) . ';';
 		}
 		return $code;
 	}
@@ -36,7 +41,7 @@ class Tx_Addthis_CodeGenerator {
 		} else {
 			$sheme = 'http://';
 		}
-		$url = $sheme.'s7.addthis.com/js/250/addthis_widget.js#username='.$this->config->getUsername();
+		$url = $sheme.'s7.addthis.com/js/250/addthis_widget.js#domready=1';
 		return $url;
 	}
 	/**
