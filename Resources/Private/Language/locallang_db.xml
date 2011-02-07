@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'addthis'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.list_type_pi1">Addthis</label>
+			<label index="flexform">Settings</label>
+			<label index="flexform.username">Addthis Username</label>
+			<label index="flexform.services_exclude">Services to exclude</label>
+			<label index="flexform.services_compact">Services in compact view</label>
+			<label index="flexform.services_expanded">Services in the expanded menu</label>
+			<label index="flexform.ui_click">Click to reveal</label>
+			<label index="flexform.ui_delay">View delay in milliseconds</label>
+			<label index="flexform.ui_language">Language</label>
+			<label index="flexform.ui_offset_top">Offset top in pixels</label>
+			<label index="flexform.ui_offset_left">Offset left in pixels</label>
+			<label index="flexform.ui_header_color">Header text color</label>
+			<label index="flexform.ui_header_background">Header background color</label>
+			<label index="flexform.ui_cobrand">Company brand</label>
+			<label index="flexform.data_ga_tracker">Google Analytics variable ( e.g. pageTracker )</label>
+			<label index="flexform.data_track_clickback">Tracking</label>
+			<label index="flexform.label">Label</label>
+			<label index="flexform.style">Style</label>
+			
+		</languageKey>
+	
+	</data>
+</T3locallang>
