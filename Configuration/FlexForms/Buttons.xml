@@ -224,6 +224,16 @@
 							</config>
 						</TCEforms>
 					</settings.ui_cobrand>
+					<settings.ui_use_css>
+						<TCEforms>
+							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.ui_use_css</label>
+							<config>
+								<type>check</type>
+								<default>1</default>
+							</config>
+						</TCEforms>
+					</settings.ui_use_css>
+					
 				</el>
 			</ROOT>
 		</extended>

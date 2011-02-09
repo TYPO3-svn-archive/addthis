@@ -27,12 +27,14 @@
 			<label index="flexform.label">Label</label>
 			<label index="flexform.style">Style</label>
 			<label index="flexform.url">Url (if diffrent)</label>
-			<label index="flexform.email_template">name of template to use for emailed share</label>
+			<label index="flexform.email_template">Email Template</label>
 			<label index="flexform.title">Title of shared object</label>
 			<label index="flexform.description">Description of shared object</label>
-			<label index="flexform.swfurl">URL of a Flash object to share, along with the link</label>
-			<label index="flexform.width">Ideal width of any provided Flash object </label>
-			<label index="flexform.height">Ideal height of any provide Flash object </label>
+			<label index="flexform.swfurl">SWF Url</label>
+			<label index="flexform.width">Width</label>
+			<label index="flexform.height">Height</label>
+			<label index="flexform.ui_use_css">Use CSS</label>
+			
 		</languageKey>
 	</data>
 </T3locallang>

@@ -23,10 +23,6 @@ class Tx_Addthis_Controller_ButtonsController extends Tx_Extbase_MVC_Controller_
 	private function getConfig(){
 		$config = new Tx_Addthis_Config();
 		$config->setSettings($this->settings);
-		$extConfig = unserialize ( $GLOBALS ['TYPO3_CONF_VARS'] ['EXT'] ['extConf'] ['addthis'] );
-		if(is_array($extConfig) && isset($extConfig['username']) &&  !empty($extConfig['username'])) {
-			$config->setUsername($extConfig['username']);
-		}
 		return $config;
 	}
 }

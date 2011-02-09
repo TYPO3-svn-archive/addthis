@@ -22,6 +22,15 @@ class Tx_Addthis_Config {
 	 */
 	private $style;
 	/**
+	 * Set the username
+	 */
+	public function __construct(){
+		$extConfig = unserialize ( $GLOBALS ['TYPO3_CONF_VARS'] ['EXT'] ['extConf'] ['addthis'] );
+		if(is_array($extConfig) && isset($extConfig['username']) &&  !empty($extConfig['username'])) {
+			$this->setUsername($extConfig['username']);
+		}
+	}
+	/**
 	 * @param array $settings
 	 */
 	public function setSettings(array $settings = array() ){
@@ -34,13 +43,14 @@ class Tx_Addthis_Config {
 		$config_keys[] = 'services_exclude';
 		$config_keys[] = 'ui_click';
 		$config_keys[] = 'ui_delay';
+		$config_keys[] = 'ui_use_css';
 		$config_keys[] = 'ui_offset_top';
 		$config_keys[] = 'ui_offset_left';
 		$config_keys[] = 'ui_header_color';
 		$config_keys[] = 'ui_header_background';
 		$config_keys[] = 'ui_cobrand';
 		foreach($settings as $key =>$value){
-			if(in_array($key,$config_keys) && !empty($value)){
+			if(in_array($key,$config_keys) && $value!==''){
 				$this->jsConfig[$key] = $value;
 			}
 		}
@@ -53,7 +63,7 @@ class Tx_Addthis_Config {
 		$share_keys[] = 'height';
 		$share_keys[] = 'email_template';
 		foreach($settings as $key =>$value){
-			if(in_array($key,$share_keys) && !empty($value)){
+			if(in_array($key,$share_keys) && $value!==''){
 				$this->jsShare[$key] = $value;
 			}
 		}
