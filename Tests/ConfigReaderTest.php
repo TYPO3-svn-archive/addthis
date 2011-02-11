@@ -2,7 +2,6 @@
 require_once dirname ( __FILE__ ) . '/../Classes/ConfigReader.php';
 /**
  * test case for Tx_Addthis_ConfigReader
- * 
  * @package addthis
  */
 class Tx_AddThis_ConfigReaderTest extends tx_phpunit_testcase {

@@ -22,12 +22,26 @@ class Tx_Addthis_Config {
 	 */
 	private $style;
 	/**
+	 * @var string
+	 */
+	private $httpSheme = 'http://';
+	/**
+	 * @var string
+	 */
+	private $httpsSheme = 'https://';
+	/**
 	 * Set the username
 	 */
 	public function __construct(){
 		$extConfig = unserialize ( $GLOBALS ['TYPO3_CONF_VARS'] ['EXT'] ['extConf'] ['addthis'] );
 		if(is_array($extConfig) && isset($extConfig['username']) &&  !empty($extConfig['username'])) {
 			$this->setUsername($extConfig['username']);
+		}
+		if(is_array($extConfig) && isset($extConfig['http_sheme']) &&  !empty($extConfig['http_sheme'])) {
+			$this->setHttpSheme($extConfig['http_sheme']);
+		}
+		if(is_array($extConfig) && isset($extConfig['https_sheme']) &&  !empty($extConfig['https_sheme'])) {
+			$this->setHttpsSheme($extConfig['https_sheme']);
 		}
 	}
 	/**
@@ -73,14 +87,14 @@ class Tx_Addthis_Config {
 		}
 	}
 	/**
-	 * @return the $jsConfig
+	 * @return string $jsConfig
 	 */
 	public function getJsConfig() {
 		return $this->jsConfig;
 	}
 
 	/**
-	 * @return the $username
+	 * @return string $username
 	 */
 	public function getUsername() {
 		return $this->username;
@@ -111,6 +125,34 @@ class Tx_Addthis_Config {
 	public function getJsShare() {
 		return $this->jsShare;
 	}
+	/**
+	 * @return string $httpSheme
+	 */
+	public function getHttpSheme() {
+		return $this->httpSheme;
+	}
+
+	/**
+	 * @return string $httpsSheme
+	 */
+	public function getHttpsSheme() {
+		return $this->httpsSheme;
+	}
+
+	/**
+	 * @param string $httpSheme the $httpSheme to set
+	 */
+	public function setHttpSheme($httpSheme) {
+		$this->httpSheme = $httpSheme;
+	}
+
+	/**
+	 * @param string $httpsSheme the $httpsSheme to set
+	 */
+	public function setHttpsSheme($httpsSheme) {
+		$this->httpsSheme = $httpsSheme;
+	}
+
 
 
 

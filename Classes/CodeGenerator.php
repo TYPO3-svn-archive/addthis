@@ -37,9 +37,9 @@ class Tx_Addthis_CodeGenerator {
 	 */
 	public function getJsImport() {
 		if (t3lib_div::getIndpEnv ( 'TYPO3_SSL' )) {
-			$sheme = 'https://';
+			$sheme = $this->config->getHttpsSheme();
 		} else {
-			$sheme = 'http://';
+			$sheme = $this->config->getHttpSheme();
 		}
 		$url = $sheme.'s7.addthis.com/js/250/addthis_widget.js#domready=1';
 		return $url;
