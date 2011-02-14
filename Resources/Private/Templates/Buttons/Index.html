@@ -1,0 +1,24 @@
+{namespace addthis=Tx_Addthis_ViewHelpers}
+<!-- AddThis Button BEGIN -->
+	<span class="tx_addthis">
+		<span class="tx_addthis_label">
+			{label}
+		</span>
+		<span class="tx_addthis_buttons">
+			<addthis:rawValue value="{html}" />
+		</span>
+	</span>
+	<script type="text/javascript">
+		<addthis:rawValue value="{config}" />
+	</script>
+	<script type="text/javascript" src="{url}"></script>
+	<script type="text/javascript">
+		if(typeof($) != 'undefined'){
+			var script = '{url}';
+			if (window.addthis){
+				window.addthis = null;
+			}
+			$.getScript( script );
+		}
+	</script>
+<!-- AddThis Button END -->
