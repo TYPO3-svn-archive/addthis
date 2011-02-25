@@ -20,7 +20,7 @@ class Tx_Addthis_CodeGenerator {
 	 */
 	public function getConfigJs() {
 		$config =  $this->config->getJsConfig();
-		$config['username'] = $this->config->getUsername();
+		$config['pubid'] = $this->config->getUsername();
 		$code = '';
 		if(!empty($config)){
 			$code = 'var addthis_config = ' . json_encode ($config) . ';';

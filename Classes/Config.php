@@ -48,6 +48,8 @@ class Tx_Addthis_Config {
 	 * @param array $settings
 	 */
 	public function setSettings(array $settings = array() ){
+		$booleans = array('ui_click','ui_use_css','data_track_clickback');
+		
 		$config_keys = array();
 		$config_keys[] = 'data_track_clickback';
 		$config_keys[] = 'ui_language';
@@ -63,8 +65,14 @@ class Tx_Addthis_Config {
 		$config_keys[] = 'ui_header_color';
 		$config_keys[] = 'ui_header_background';
 		$config_keys[] = 'ui_cobrand';
+		
+		
+		
 		foreach($settings as $key =>$value){
 			if(in_array($key,$config_keys) && $value!==''){
+				if(in_array($key,$booleans)){
+					$value = (boolean)$value;
+				}
 				$this->jsConfig[$key] = $value;
 			}
 		}
@@ -77,7 +85,7 @@ class Tx_Addthis_Config {
 		$share_keys[] = 'height';
 		$share_keys[] = 'email_template';
 		foreach($settings as $key =>$value){
-			if(in_array($key,$share_keys) && $value!==''){
+			if(in_array($key,$share_keys) && !empty($value)){
 				$this->jsShare[$key] = $value;
 			}
 		}
@@ -152,10 +160,4 @@ class Tx_Addthis_Config {
 	public function setHttpsSheme($httpsSheme) {
 		$this->httpsSheme = $httpsSheme;
 	}
-
-
-
-
-
-	
 }
