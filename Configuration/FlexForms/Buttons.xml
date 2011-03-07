@@ -117,6 +117,21 @@
 					<sheetTitle>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.extended</sheetTitle>
 				</TCEforms>
 				<el>
+					<settings.image>
+						<TCEforms>
+							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.image</label>
+							<config>
+								<type>group</type>
+								<internal_type>file</internal_type>
+								<allowed>jpg,png,gif</allowed>
+								<max_size>10000</max_size>
+								<uploadfolder>uploads/tx_addthis/</uploadfolder>
+								<size>5</size>
+								<maxitems>1</maxitems>
+								<minitems>0</minitems>
+							</config>
+						</TCEforms>
+					</settings.image>
 					<settings.ui_click>
 						<TCEforms>
 							<label>LLL:EXT:addthis/Resources/Private/Language/locallang_db.xml:flexform.ui_click</label>
@@ -237,5 +252,6 @@
 				</el>
 			</ROOT>
 		</extended>
+		
 	</sheets>
 </T3DataStructure>
