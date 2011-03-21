@@ -14,7 +14,8 @@ class Tx_Addthis_Controller_ButtonsController extends Tx_Extbase_MVC_Controller_
 		$codeGenerator = new Tx_Addthis_CodeGenerator($this->getConfig());
 		$this->view->assign('html',$codeGenerator->getHtmlCode());
 		$this->view->assign('config',$codeGenerator->getConfigJs());
-		$this->view->assign('url',$codeGenerator->getJsImport());
+		$this->view->assign('urlDomIsNotReady',$codeGenerator->getJsImport(FALSE));
+		$this->view->assign('urlDomIsReady',$codeGenerator->getJsImport(TRUE));
 		$this->view->assign('label',$this->settings['label']);
 		if(isset($this->settings['image']) && !empty($this->settings['image'])){
 			$baseUri = $this->request->getBaseURI ();

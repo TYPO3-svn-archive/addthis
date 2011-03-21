@@ -33,15 +33,19 @@ class Tx_Addthis_CodeGenerator {
 	}
 	/**
 	 * create the js import
+	 * @param boolean $domIsReady optional, default is TRUE
 	 * @return string
 	 */
-	public function getJsImport() {
+	public function getJsImport($domIsReady = TRUE) {
 		if (t3lib_div::getIndpEnv ( 'TYPO3_SSL' )) {
 			$sheme = $this->config->getHttpsSheme();
 		} else {
 			$sheme = $this->config->getHttpSheme();
 		}
-		$url = $sheme.'s7.addthis.com/js/250/addthis_widget.js#domready=1';
+		$url = $sheme.'s7.addthis.com/js/250/addthis_widget.js';
+		if($domIsReady === TRUE) {
+			$url .= '#domready=1';
+		}
 		return $url;
 	}
 	/**
