@@ -22,4 +22,18 @@ class Tx_Addthis_Metatags {
 		$path = $baseUri .'uploads/tx_addthis/'.$image;
 		$this->addTag('og:image',$path);
 	}
+	
+	/**
+	 * @param string $title
+	 */
+	public function addTitle($title) {
+		$this->addTag('og:title',$title);
+	}
+	
+	/**
+	 * @param string $description
+	 */
+	public function addDescription($description) {
+		$this->addTag('og:description', $description);
+	}
 }

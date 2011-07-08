@@ -17,11 +17,19 @@ class Tx_Addthis_Controller_ButtonsController extends Tx_Extbase_MVC_Controller_
 		$this->view->assign('urlDomIsNotReady',$codeGenerator->getJsImport(FALSE));
 		$this->view->assign('urlDomIsReady',$codeGenerator->getJsImport(TRUE));
 		$this->view->assign('label',$this->settings['label']);
+		
+		$metatags = new Tx_Addthis_Metatags();
 		if(isset($this->settings['image']) && !empty($this->settings['image'])){
 			$baseUri = $this->request->getBaseURI ();
-			$metatags = new Tx_Addthis_Metatags();
 			$metatags->addThumbnail($this->settings['image'],$baseUri);
 		}
+		if(isset($this->settings['title']) && !empty($this->settings['title'])) {
+			$metatags->addTitle($this->settings['title']);
+		};
+		
+		if(isset($this->settings['description']) && !empty($this->settings['description'])) {
+			$metatags->addDescription($this->settings['description']);
+		};
 		
 	}
 	/**
