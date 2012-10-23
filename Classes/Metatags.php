@@ -18,18 +18,18 @@ class Tx_Addthis_Metatags {
 	 * @param string $image
 	 * @param string $baseUri
 	 */
-	public function addThumbnail($image,$baseUri){
-		$path = $baseUri .'uploads/tx_addthis/'.$image;
+	public function addThumbnail($image,$baseUri,$path='uploads/tx_addthis/'){
+		$path = $baseUri . $path .$image;
 		$this->addTag('og:image',$path);
 	}
-	
+
 	/**
 	 * @param string $title
 	 */
 	public function addTitle($title) {
 		$this->addTag('og:title',$title);
 	}
-	
+
 	/**
 	 * @param string $description
 	 */
