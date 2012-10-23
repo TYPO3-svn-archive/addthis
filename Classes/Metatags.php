@@ -17,9 +17,10 @@ class Tx_Addthis_Metatags {
 	/**
 	 * @param string $image
 	 * @param string $baseUri
+	 * @param string $path
 	 */
 	public function addThumbnail($image,$baseUri,$path='uploads/tx_addthis/'){
-		$path = $baseUri . $path .$image;
+		$path = $baseUri . $path . $image;
 		$this->addTag('og:image',$path);
 	}
 
