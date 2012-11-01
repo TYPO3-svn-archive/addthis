@@ -13,7 +13,8 @@
 	</script>
 	<script type="text/javascript" src="{urlDomIsNotReady}"></script>
 	<script type="text/javascript">
-		if(typeof($) != 'undefined'){
+		var tx_addthis_script_url = '{urlDomIsNotReady}';
+        if('{ajaxcontent}'){
 			var script = '{urlDomIsReady}';
 			if (window.addthis){
 				window.addthis = null;

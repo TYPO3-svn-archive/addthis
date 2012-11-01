@@ -129,6 +129,13 @@
             'uri'               : getURI
         };
 
+        function initAddthis() {
+            if (window.addthis){
+                window.addthis = null;
+            }
+            $.getScript( tx_addthis_script_url+"#async=1" );
+        }
+
         // Standardwerte des Plug-Ings mit den vom User angegebenen Optionen ueberschreiben
         var options = $.extend(true, defaults, settings);
 
@@ -179,7 +186,7 @@
                         $container_fb.addClass('info_off');
                         $container_fb.find('span.switch').addClass('on').removeClass('off').html(options.services.facebook.txt_fb_on);
                         $container_fb.find('img.fb_like_privacy_dummy').replaceWith(fb_code);
-                        init_addthis();
+                        initAddthis();
                     } else {
                         $container_fb.removeClass('info_off');
                         $container_fb.find('span.switch').addClass('off').removeClass('on').html(options.services.facebook.txt_fb_off);
@@ -213,7 +220,7 @@
                         $container_tw.addClass('info_off');
                         $container_tw.find('span.switch').addClass('on').removeClass('off').html(options.services.twitter.txt_twitter_on);
                         $container_tw.find('img.tweet_this_dummy').replaceWith(twitter_code);
-                        init_addthis();
+                        initAddthis();
                     } else {
                         $container_tw.removeClass('info_off');
                         $container_tw.find('span.switch').addClass('off').removeClass('on').html(options.services.twitter.txt_twitter_off);
@@ -242,7 +249,7 @@
                         $container_gplus.addClass('info_off');
                         $container_gplus.find('span.switch').addClass('on').removeClass('off').html(options.services.gplus.txt_gplus_on);
                         $container_gplus.find('img.gplus_one_dummy').replaceWith(gplus_code);
-                        init_addthis();
+                        initAddthis();
                     } else {
                         $container_gplus.removeClass('info_off');
                         $container_gplus.find('span.switch').addClass('off').removeClass('on').html(options.services.gplus.txt_gplus_off);
