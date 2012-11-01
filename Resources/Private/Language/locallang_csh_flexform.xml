@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+  <meta type="array">
+    <description>CSH labels for FlexForm fields</description>
+    <type>CSH</type>
+    <csh_table></csh_table>
+    <fileId>EXT:addthis/locallang_csh_flexform.xml</fileId>
+    <labelContext type="array"></labelContext>
+  </meta>
+  <data type="array">
+    <languageKey index="default" type="array">
+	<label index="flexform.data_ga_tracker">pageTracker is the default value for Google Analytics. If you do not use GA, the leave the feild blank.</label>	
+    </languageKey>
+	<languageKey index="dk" type="array">
+		<label index="flexform.data_ga_tracker">Google Analytics variable ( e.g. pageTracker )</label>
+	</languageKey>
+  </data>
+</T3locallang>
+

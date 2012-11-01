@@ -1,0 +1,6 @@
+  # cat=basic//20; type=input; label= Addthis username
+username =
+  # cat=basic//20; type=input; label= HTTP Sheme
+http_sheme = http://
+  # cat=basic//20; type=input; label= HTTPS Sheme
+https_sheme = https://
