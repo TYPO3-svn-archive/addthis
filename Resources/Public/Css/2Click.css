@@ -1,0 +1,9 @@
+.social_share_privacy_area {
+    margin: 0 !important;
+}
+.social_share_privacy_area li .switch {
+    background: transparent url(/typo3conf/ext/addthis/Resources/Public/Images/2Click/socialshareprivacy_on_off.png) no-repeat 0 0 scroll;
+}
+.social_share_privacy_area li {
+    height: 35px;
+}
