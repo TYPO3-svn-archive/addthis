@@ -17,7 +17,9 @@ class Tx_Addthis_Controller_ButtonsController extends Tx_Extbase_MVC_Controller_
 		$this->view->assign('urlDomIsNotReady',$codeGenerator->getJsImport(FALSE));
 		$this->view->assign('urlDomIsReady',$codeGenerator->getJsImport(TRUE));
 		$this->view->assign('label',$this->settings['label']);
-		
+		if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 'xmlhttprequest' === strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])){
+			$this->view->assign('ajaxcontext', 'TRUE');
+		}
 		$metatags = new Tx_Addthis_Metatags();
 		if(isset($this->settings['image']) && !empty($this->settings['image'])){
 			$baseUri = $this->request->getBaseURI ();
