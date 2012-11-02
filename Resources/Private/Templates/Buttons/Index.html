@@ -11,10 +11,15 @@
 	<script type="text/javascript">
 		<addthis:rawValue value="{config}" />
 	</script>
-	<script type="text/javascript" src="{urlDomIsNotReady}"></script>
+	<f:if condition="{isTwoClick}">
+		<f:then></f:then>
+		<f:else>
+			<script type="text/javascript" src="{urlDomIsNotReady}"></script>
+		</f:else>
+	</f:if>
 	<script type="text/javascript">
 		var tx_addthis_script_url = '{urlDomIsNotReady}';
-        if('{ajaxcontent}'){
+		if('{ajaxcontent}'){
 			var script = '{urlDomIsReady}';
 			if (window.addthis){
 				window.addthis = null;

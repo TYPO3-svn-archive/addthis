@@ -45,8 +45,6 @@ class Tx_Addthis_CodeGenerator {
 		$url = $sheme.'s7.addthis.com/js/250/addthis_widget.js';
 		if($domIsReady === TRUE) {
 			$url .= '#domready=1';
-		} else {
-			$url .= '#async=1';
 		}
 		return $url;
 	}

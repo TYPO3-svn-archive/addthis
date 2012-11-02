@@ -32,9 +32,12 @@ class Tx_Addthis_Controller_ButtonsController extends Tx_Extbase_MVC_Controller_
 		if(isset($this->settings['description']) && !empty($this->settings['description'])) {
 			$metatags->addDescription($this->settings['description']);
 		};
+		$isTwoClick = FALSE;
 		if (FALSE !== strpos(base64_decode($this->settings['style']), 'socialshareprivacy')){
 			$this->include2ClickResources();
+			$isTwoClick = TRUE;
 		}
+		$this->view->assign('isTwoClick',$isTwoClick);
 	}
 
 	/**
