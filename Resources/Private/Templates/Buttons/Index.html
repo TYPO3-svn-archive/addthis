@@ -1,9 +1,13 @@
 {namespace addthis=Tx_Addthis_ViewHelpers}
 <!-- AddThis Button BEGIN -->
 	<span class="tx_addthis">
-		<span class="tx_addthis_label" style="float: left; padding-right:5px;">
-			{label}
-		</span>
+		<f:if condition="{label}">
+			<f:then>
+				<span class="tx_addthis_label" style="float: left; padding-right:5px;">
+					{label}
+				</span>
+			</f:then>
+		</f:if>
 		<span class="tx_addthis_buttons">
 			<addthis:rawValue value="{html}" />
 		</span>
