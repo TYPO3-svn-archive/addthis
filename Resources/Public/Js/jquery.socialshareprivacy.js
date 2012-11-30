@@ -174,7 +174,7 @@
             //
             if (facebook_on) {
                 var fb_enc_uri = encodeURIComponent(uri + options.services.facebook.referrer_track);
-                var fb_code = '<a class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:width="116"></a>';
+                var fb_code = '<a class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:width="130"></a>';
                 var fb_dummy_btn = '<img src="' + options.services.facebook.dummy_img + '" alt="Facebook &quot;Like&quot;-Dummy" class="fb_like_privacy_dummy" />';
 
                 context.append('<li class="facebook help_info"><span class="switch off">' + options.services.facebook.txt_fb_off + '</span><div class="fb_like dummy_btn">' + fb_dummy_btn + '</div></li>');
