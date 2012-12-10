@@ -17,7 +17,7 @@ class Tx_Addthis_Controller_ButtonsController extends Tx_Extbase_MVC_Controller_
 		$this->view->assign('urlDomIsNotReady',$codeGenerator->getJsImport(FALSE));
 		$this->view->assign('urlDomIsReady',$codeGenerator->getJsImport(TRUE));
 		$this->view->assign('label',$this->settings['label']);
-		if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 'xmlhttprequest' === strtolower($_SERVER['HTTP_X_REQUESTED_WITH'])){
+		if ($this->isAjaxRequest()) {
 			$this->view->assign('ajaxcontext', 'TRUE');
 		}
 		$metatags = new Tx_Addthis_Metatags();
@@ -28,7 +28,7 @@ class Tx_Addthis_Controller_ButtonsController extends Tx_Extbase_MVC_Controller_
 		if(isset($this->settings['title']) && !empty($this->settings['title'])) {
 			$metatags->addTitle($this->settings['title']);
 		};
-		
+
 		if(isset($this->settings['description']) && !empty($this->settings['description'])) {
 			$metatags->addDescription($this->settings['description']);
 		};
@@ -38,6 +38,15 @@ class Tx_Addthis_Controller_ButtonsController extends Tx_Extbase_MVC_Controller_
 			$isTwoClick = TRUE;
 		}
 		$this->view->assign('isTwoClick',$isTwoClick);
+	}
+
+	/**
+	 * Tells if the current request is an AJAX request.
+	 *
+	 * @return boolean
+	 */
+	private function isAjaxRequest() {
+		return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 'xmlhttprequest' === strtolower($_SERVER['HTTP_X_REQUESTED_WITH']));
 	}
 
 	/**
