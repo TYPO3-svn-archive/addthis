@@ -132,6 +132,12 @@
         function initAddthis() {
             if (window.addthis){
                 window.addthis = null;
+                window._adr = null;
+                window._atc = null;
+                window._atd = null;
+                window._ate = null;
+                window._atr = null;
+                window._atw = null;
             }
             $.getScript( tx_addthis_script_url+"#async=1" );
         }
