@@ -23,18 +23,32 @@
 	</f:if>
 	<script type="text/javascript">
 		var tx_addthis_script_url = '{urlDomIsNotReady}';
-		if('{ajaxcontext}'){
-			var script = '{urlDomIsReady}';
-			if (window.addthis){
-				window.addthis = null;
-				window._adr = null;
-				window._atc = null;
-				window._atd = null;
-				window._ate = null;
-				window._atr = null;
-				window._atw = null;
+		
+		(function($) {
+			var reloadAddThis = function() {
+				if (window.addthis){
+					window.addthis = null;
+					window._adr = null;
+					window._atc = null;
+					window._atd = null;
+					window._ate = null;
+					window._atr = null;
+					window._atw = null;
+				}
+				$.getScript('{urlDomIsReady}');
 			}
-			$.getScript( script );
-		}
+			
+			if ('{ajaxcontext}' === 'TRUE'){
+				if (typeof $.mobile != 'undefined') {
+					$(document).one('pageshow', function() {
+						reloadAddThis();
+					});
+				} else {
+					reloadAddThis();
+				}
+			}
+			
+		})(jQuery);
+		
 	</script>
 <!-- AddThis Button END -->
