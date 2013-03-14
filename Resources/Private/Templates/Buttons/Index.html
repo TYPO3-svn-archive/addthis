@@ -24,7 +24,7 @@
 	<script type="text/javascript">
 		var tx_addthis_script_url = '{urlDomIsNotReady}';
 		
-		(function($) {
+		(function() {
 			var reloadAddThis = function() {
 				if (window.addthis){
 					window.addthis = null;
@@ -36,9 +36,13 @@
 					window._atw = null;
 				}
 				$.getScript('{urlDomIsReady}');
-			}
+			};
 			
 			if ('{ajaxcontext}' === 'TRUE'){
+				if (typeof jQuery == 'undefined') {
+					return;
+				}
+				
 				if (typeof $.mobile != 'undefined') {
 					$(document).one('pageshow', function() {
 						reloadAddThis();
@@ -47,8 +51,7 @@
 					reloadAddThis();
 				}
 			}
-			
-		})(jQuery);
+		})();
 		
 	</script>
 <!-- AddThis Button END -->
