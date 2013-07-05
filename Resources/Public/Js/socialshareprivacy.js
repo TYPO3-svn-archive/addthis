@@ -4,15 +4,15 @@ jQuery(function(){
             'css_path:' : '',
             services: {
                 facebook: {
-                    dummy_img: 'typo3conf/ext/addthis/Resources/Public/Images/2Click/dummy_facebook.png',
+                    dummy_img: $('#tx_addthis_socialshareprivacy_dummy_facebook').attr('src'),
                     txt_info: ''
                 },
                 twitter: {
-                    dummy_img: 'typo3conf/ext/addthis/Resources/Public/Images/2Click/dummy_twitter.png',
+                    dummy_img: $('#tx_addthis_socialshareprivacy_dummy_twitter').attr('src'),
                     txt_info: ''
                 },
                 gplus: {
-                    dummy_img: 'typo3conf/ext/addthis/Resources/Public/Images/2Click/dummy_gplus.png',
+                    dummy_img: $('#tx_addthis_socialshareprivacy_dummy_gplus').attr('src'),
                     txt_info: ''
                 }
             }
