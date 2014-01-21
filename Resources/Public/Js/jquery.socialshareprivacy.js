@@ -67,6 +67,29 @@
         return encodeURIComponent(title);
     }
 
+	/**
+	 * build image-HTML-tag, which represents a clickable button
+	 *
+	 * @param string imgSource
+	 * @param string imgWidth
+	 * @param string imgHeight
+	 * @param string alt
+	 * @param string cssClass
+	 * @returns {string}
+	 */
+	function getDummyButton(imgSource, imgWidth, imgHeight, alt, cssClass) {
+		var attrWidth = '';
+		var attrHeight = '';
+		if(imgWidth.length > 0) {
+			attrWidth = ' width="' + imgWidth + '"';
+		}
+		if(imgHeight.length > 0) {
+			attrHeight = ' height="' + imgHeight + '"';
+		}
+		var image = '<img src="' + imgSource + '"' + attrWidth + attrHeight + ' alt="' + alt + '" class="' + cssClass + '" />';
+		return image;
+	}
+
     // build URI from rel="canonical" or document.location
     function getURI() {
         var uri = document.location.href;
@@ -100,6 +123,8 @@
                 'facebook' : {
                     'status'            : 'on',
                     'dummy_img'         : 'socialshareprivacy/images/dummy_facebook.png',
+					'dummy_img_width'   : '',
+					'dummy_img_height'  : '',
                     'txt_info'          : '2 Klicks f&uuml;r mehr Datenschutz: Erst wenn Sie hier klicken, wird der Button aktiv und Sie k&ouml;nnen Ihre Empfehlung an Facebook senden. Schon beim Aktivieren werden Daten an Dritte &uuml;bertragen &ndash; siehe <em>i</em>.',
                     'txt_fb_off'        : 'nicht mit Facebook verbunden',
                     'txt_fb_on'         : 'mit Facebook verbunden',
@@ -112,6 +137,8 @@
                 'twitter' : {
                     'status'            : 'on', 
                     'dummy_img'         : 'socialshareprivacy/images/dummy_twitter.png',
+					'dummy_img_width'   : '',
+					'dummy_img_height'  : '',
                     'txt_info'          : '2 Klicks f&uuml;r mehr Datenschutz: Erst wenn Sie hier klicken, wird der Button aktiv und Sie k&ouml;nnen Ihre Empfehlung an Twitter senden. Schon beim Aktivieren werden Daten an Dritte &uuml;bertragen &ndash; siehe <em>i</em>.',
                     'txt_twitter_off'   : 'nicht mit Twitter verbunden',
                     'txt_twitter_on'    : 'mit Twitter verbunden',
@@ -124,6 +151,8 @@
                 'gplus' : {
                     'status'            : 'on',
                     'dummy_img'         : 'socialshareprivacy/images/dummy_gplus.png',
+					'dummy_img_width'   : '',
+					'dummy_img_height'  : '',
                     'txt_info'          : '2 Klicks f&uuml;r mehr Datenschutz: Erst wenn Sie hier klicken, wird der Button aktiv und Sie k&ouml;nnen Ihre Empfehlung an Google+ senden. Schon beim Aktivieren werden Daten an Dritte &uuml;bertragen &ndash; siehe <em>i</em>.',
                     'txt_gplus_off'     : 'nicht mit Google+ verbunden',
                     'txt_gplus_on'      : 'mit Google+ verbunden',
@@ -195,7 +224,7 @@
             if (facebook_on) {
                 var fb_enc_uri = encodeURIComponent(uri + options.services.facebook.referrer_track);
                 var fb_code = '<a class="addthis_button_facebook_like" fb:like:layout="button_count" fb:like:width="130"></a>';
-                var fb_dummy_btn = '<img src="' + options.services.facebook.dummy_img + '" alt="Facebook &quot;Like&quot;-Dummy" class="fb_like_privacy_dummy" />';
+				var fb_dummy_btn = getDummyButton(options.services.facebook.dummy_img, options.services.facebook.dummy_img_width, options.services.facebook.dummy_img_height,  'Facebook &quot;Like&quot;-Dummy', 'fb_like_privacy_dummy');
 
                 context.append('<li class="facebook help_info"><span class="switch off">' + options.services.facebook.txt_fb_off + '</span><div class="fb_like dummy_btn">' + fb_dummy_btn + '</div></li>');
 
@@ -229,7 +258,7 @@
                 var twitter_enc_uri = encodeURIComponent(uri + options.services.twitter.referrer_track);
                 var twitter_count_url = encodeURIComponent(uri);
                 var twitter_code = '<a class="addthis_button_tweet" tw:via="addthis"></a>';
-                var twitter_dummy_btn = '<img src="' + options.services.twitter.dummy_img + '" alt="&quot;Tweet this&quot;-Dummy" class="tweet_this_dummy" />';
+				var twitter_dummy_btn = getDummyButton(options.services.twitter.dummy_img, options.services.twitter.dummy_img_width, options.services.twitter.dummy_img_height, '&quot;Tweet this&quot;-Dummy', 'tweet_this_dummy');
 
                 context.append('<li class="twitter help_info"><span class="switch off">' + options.services.twitter.txt_twitter_off + '</span><div class="tweet dummy_btn">' + twitter_dummy_btn + '</div></li>');
 
@@ -258,7 +287,7 @@
                 
                 // we use the Google+ "asynchronous" code, standard code is flaky if inserted into dom after load
                 var gplus_code = '<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>';
-                var gplus_dummy_btn = '<img src="' + options.services.gplus.dummy_img + '" alt="&quot;Google+1&quot;-Dummy" class="gplus_one_dummy" />';
+				var gplus_dummy_btn = getDummyButton(options.services.gplus.dummy_img, options.services.gplus.dummy_img_width, options.services.gplus.dummy_img_height, '&quot;Google+1&quot;-Dummy', 'gplus_one_dummy');
 
                 context.append('<li class="gplus help_info"><span class="switch off">' + options.services.gplus.txt_gplus_off + '</span><div class="gplusone dummy_btn">' + gplus_dummy_btn + '</div></li>');
 
