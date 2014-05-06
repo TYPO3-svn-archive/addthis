@@ -23,9 +23,11 @@ class tx_Addthis_Wizard {
 	 *
 	 * @return	The array with language labels
 	 */
-	private function includeLocalLang() {
-		$llFile = t3lib_extMgm::extPath ( 'addthis' ) . 'Resources/Private/Language/locallang.xml';
-		$LOCAL_LANG = t3lib_div::readLLXMLfile ( $llFile, $GLOBALS ['LANG']->lang );
+	private function includeLocalLang()    {
+		$LOCAL_LANG = \TYPO3\CMS\Core\Utility\GeneralUtility::readLLfile(
+			\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath ( 'addthis' ) . 'Resources/Private/Language/locallang.xml',
+			$GLOBALS['LANG']->lang);
 		return $LOCAL_LANG;
 	}
+
 }
