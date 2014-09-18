@@ -4,7 +4,10 @@
  * @package addthis
  */
 class Tx_Addthis_Config {
-	/**
+	const DOCTYPE_XHTML = 1;
+    const DOCTYPE_HTML = 2;
+
+    /**
 	 * @var array
 	 */
 	private $jsConfig = array();
@@ -29,6 +32,10 @@ class Tx_Addthis_Config {
 	 * @var string
 	 */
 	private $httpsSheme = 'https://';
+    /**
+     * @var integer
+     */
+    private $doctype;
 	/**
 	 * Set the username
 	 */
@@ -43,6 +50,8 @@ class Tx_Addthis_Config {
 		if(is_array($extConfig) && isset($extConfig['https_sheme']) &&  !empty($extConfig['https_sheme'])) {
 			$this->setHttpsSheme($extConfig['https_sheme']);
 		}
+
+        $this->setDoctype($this->getDoctypeConfig());
 	}
 	/**
 	 * @param array $settings
@@ -160,4 +169,37 @@ class Tx_Addthis_Config {
 	public function setHttpsSheme($httpsSheme) {
 		$this->httpsSheme = $httpsSheme;
 	}
+
+    /**
+     * @param integer $doctype
+     */
+    public function setDoctype($doctype) {
+        $this->doctype = $doctype;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getDoctype() {
+        return $this->doctype;
+    }
+
+    /**
+     * @return string
+     * @see http://docs.typo3.org/typo3cms/TyposcriptReference/Setup/Config/Index.html#doctype
+     */
+    private function getDoctypeConfig() {
+        if (false === isset($GLOBALS['TSFE']->config['config']['doctype'])) {
+            return self::DOCTYPE_HTML;
+        }
+
+        $doctype = $GLOBALS['TSFE']->config['config']['doctype'];
+
+        if (false !== strpos($doctype, 'xhtml')) {
+            return self::DOCTYPE_XHTML;
+        }
+        else {
+            return self::DOCTYPE_HTML;
+        }
+    }
 }

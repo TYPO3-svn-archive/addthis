@@ -11,7 +11,9 @@ class Tx_Addthis_Controller_ButtonsController extends Tx_Extbase_MVC_Controller_
 	 * Generate the Addthis Code
 	 */
 	public function indexAction(){
-		$codeGenerator = new Tx_Addthis_CodeGenerator($this->getConfig());
+		$config = $this->getConfig();
+
+        $codeGenerator = new Tx_Addthis_CodeGenerator($config);
 		$this->view->assign('html',$codeGenerator->getHtmlCode());
 		$this->view->assign('config',$codeGenerator->getConfigJs());
 		$this->view->assign('urlDomIsNotReady',$codeGenerator->getJsImport(FALSE));
@@ -20,7 +22,7 @@ class Tx_Addthis_Controller_ButtonsController extends Tx_Extbase_MVC_Controller_
 		if ($this->isAjaxRequest()) {
 			$this->view->assign('ajaxcontext', 'TRUE');
 		}
-		$metatags = new Tx_Addthis_Metatags();
+		$metatags = new Tx_Addthis_Metatags($config);
 		if(isset($this->settings['image']) && !empty($this->settings['image'])){
 			$baseUri = $this->request->getBaseURI ();
 			$metatags->addThumbnail($this->settings['image'],$baseUri);
