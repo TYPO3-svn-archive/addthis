@@ -25,7 +25,9 @@ class tx_Addthis_Wizard {
 	 */
 	private function includeLocalLang() {
 		$llFile = t3lib_extMgm::extPath ( 'addthis' ) . 'Resources/Private/Language/locallang.xml';
-		$LOCAL_LANG = t3lib_div::readLLXMLfile ( $llFile, $GLOBALS ['LANG']->lang );
-		return $LOCAL_LANG;
+        if (version_compare(TYPO3_version, '4.6.0', '>=')) {
+            return t3lib_l10n_parser_Llxml::getParsedData($llFile, $GLOBALS ['LANG']->lang);
+        }
+        return t3lib_div::readLLXMLfile($llFile, $GLOBALS ['LANG']->lang);
 	}
 }
