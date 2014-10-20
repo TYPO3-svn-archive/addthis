@@ -1,6 +1,4 @@
 <?php
-require_once dirname ( __FILE__ ) . '/../Classes/CodeGenerator.php';
-require_once dirname ( __FILE__ ) . '/../Classes/Config.php';
 /**
  * test case for Tx_Addthis_CodeGenerator
  * 

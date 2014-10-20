@@ -1,6 +1,4 @@
 <?php
-require_once dirname ( __FILE__ ) . '/../CodeGenerator.php';
-require_once dirname ( __FILE__ ) . '/../Config.php';
 /**
  * Controller with generate the buttons
  *
