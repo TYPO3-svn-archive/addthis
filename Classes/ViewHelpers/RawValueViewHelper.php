@@ -3,7 +3,7 @@
  * render the raw value
  * @package addthis
  */
-class Tx_Addthis_ViewHelpers_RawValueViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class Tx_Addthis_ViewHelpers_RawValueViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
 	/**
 	 * @param string $value
 	 * @return string raw value

@@ -1,10 +1,13 @@
 <?php
+
+use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 /**
  * Controller with generate the buttons
  *
  * @package addthis
  */
-class Tx_Addthis_Controller_ButtonsController extends Tx_Extbase_MVC_Controller_ActionController {
+class Tx_Addthis_Controller_ButtonsController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * Generate the Addthis Code
 	 */
@@ -53,10 +56,11 @@ class Tx_Addthis_Controller_ButtonsController extends Tx_Extbase_MVC_Controller_
 	 * @return void
 	 */
 	private function include2ClickResources() {
-		$GLOBALS ['TSFE']->getPageRenderer ()->addCssFile(t3lib_extMgm::siteRelPath('addthis') . 'Resources/Public/Css/socialshareprivacy.css');
-		$GLOBALS ['TSFE']->getPageRenderer ()->addCssFile(t3lib_extMgm::siteRelPath('addthis') . 'Resources/Public/Css/2Click.css');
-		$GLOBALS ['TSFE']->getPageRenderer ()->addJsFooterLibrary('addthis2click', t3lib_extMgm::siteRelPath('addthis') . 'Resources/Public/Js/jquery.socialshareprivacy.js');
-		$GLOBALS ['TSFE']->getPageRenderer ()->addJsFooterLibrary('addthis2click_init', t3lib_extMgm::siteRelPath('addthis') . 'Resources/Public/Js/socialshareprivacy.js');
+        $path = ExtensionManagementUtility::siteRelPath('addthis');
+		$GLOBALS ['TSFE']->getPageRenderer ()->addCssFile($path . 'Resources/Public/Css/socialshareprivacy.css');
+		$GLOBALS ['TSFE']->getPageRenderer ()->addCssFile($path . 'Resources/Public/Css/2Click.css');
+		$GLOBALS ['TSFE']->getPageRenderer ()->addJsFooterLibrary('addthis2click', $path . 'Resources/Public/Js/jquery.socialshareprivacy.js');
+		$GLOBALS ['TSFE']->getPageRenderer ()->addJsFooterLibrary('addthis2click_init', $path . 'Resources/Public/Js/socialshareprivacy.js');
 	}
 
 	/**

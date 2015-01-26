@@ -1,4 +1,8 @@
 <?php
+
+use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * Add the plugin to wizzard
  * @package addthis
@@ -12,12 +16,11 @@ class tx_Addthis_Wizard {
 	 * @return	Modified array with wizard items
 	 */
 	public function proc($wizardItems) {
-		global $LANG;
 		$LL = $this->includeLocalLang ();
 		$wizardItems ['plugins_tx_addthis_pi1'] = array (
-		  'icon' => t3lib_extMgm::extRelPath ( 'addthis' ) . 'Resources/Public/Images/ce_wiz.gif',
-		  'title' => $LANG->getLLL ( 'pi1_title', $LL ),
-		  'description' => $LANG->getLLL ( 'pi1_plus_wiz_description', $LL ),
+		  'icon' => ExtensionManagementUtility::extRelPath ( 'addthis' ) . 'Resources/Public/Images/ce_wiz.gif',
+		  'title' => $GLOBALS['LANG']->getLLL ( 'pi1_title', $LL ),
+		  'description' => $GLOBALS['LANG']->getLLL ( 'pi1_plus_wiz_description', $LL ),
 		  'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=addthis_pi1' );
 		return $wizardItems;
 	}
@@ -28,11 +31,9 @@ class tx_Addthis_Wizard {
 	 * @return	The array with language labels
 	 */
 	private function includeLocalLang() {
-		$llFile = t3lib_extMgm::extPath ( 'addthis' ) . 'Resources/Private/Language/locallang.xml';
-        if (version_compare(TYPO3_version, '4.7.0', '>=')) {
-            $l10nParser = t3lib_div::makeInstance('t3lib_l10n_parser_Llxml');
-            return $l10nParser->getParsedData($llFile, $GLOBALS['LANG']->lang);
-        }
-        return t3lib_div::readLLXMLfile($llFile, $GLOBALS ['LANG']->lang);
+		$llFile = ExtensionManagementUtility::extPath ( 'addthis' ) . 'Resources/Private/Language/locallang.xml';
+        /* @var $l10nParser \TYPO3\CMS\Core\Localization\Parser\LocallangXmlParser */
+        $l10nParser = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Localization\\Parser\\LocallangXmlParser');
+        return $l10nParser->getParsedData($llFile, $GLOBALS['LANG']->lang);
 	}
 }

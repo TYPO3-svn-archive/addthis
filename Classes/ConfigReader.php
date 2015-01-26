@@ -1,4 +1,7 @@
 <?php
+
+use \TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+
 /**
  * Read the available config from csv File
  * @package addthis
@@ -9,7 +12,7 @@ class tx_Addthis_ConfigReader {
 	 * @param array &$params
 	 */
 	public function services(&$params ,&$p) {
-		$file = t3lib_extMgm::extPath ( 'addthis' ) . '/Configuration/services.csv';
+		$file = ExtensionManagementUtility::extPath ( 'addthis' ) . '/Configuration/services.csv';
 		$this->readCsv($params,$file);
 	}
 	/**
@@ -17,7 +20,7 @@ class tx_Addthis_ConfigReader {
 	 * @param array &$params
 	 */
 	public function languages(&$params,&$p) {
-		$file = t3lib_extMgm::extPath ( 'addthis' ) . '/Configuration/languages.csv';
+		$file = ExtensionManagementUtility::extPath ( 'addthis' ) . '/Configuration/languages.csv';
 		$this->readCsv($params,$file);
 	}
 	/**
@@ -25,9 +28,7 @@ class tx_Addthis_ConfigReader {
 	 * @param array &$params
 	 */
 	public function styles(&$params,&$p) {
-		$ext_path = t3lib_extMgm::extPath ( 'addthis' ) ;
-		
-		$siteRelPath = t3lib_extMgm::siteRelPath ( 'addthis' );
+		$ext_path = ExtensionManagementUtility::extPath ( 'addthis' ) ;
 		$file = $ext_path . 'Configuration/styles.csv';
 		$fh = fopen ( $file, 'r' );
 		while ( ($data = fgetcsv ( $fh )) !== FALSE ) {
@@ -37,7 +38,6 @@ class tx_Addthis_ConfigReader {
 			$params ['items'] [] = array ($data [0] , $key,$image );
 		}
 		fclose ( $fh );
-		
 	}
 	/**
 	 * @param array &$params

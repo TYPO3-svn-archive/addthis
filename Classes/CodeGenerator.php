@@ -1,4 +1,7 @@
 <?php
+
+use \TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * Generate the addthis code
  * @package addthis
@@ -37,12 +40,12 @@ class Tx_Addthis_CodeGenerator {
 	 * @return string
 	 */
 	public function getJsImport($domIsReady = TRUE) {
-		if (t3lib_div::getIndpEnv ( 'TYPO3_SSL' )) {
-			$sheme = $this->config->getHttpsSheme();
+		if (GeneralUtility::getIndpEnv ( 'TYPO3_SSL' )) {
+			$scheme = $this->config->getHttpsSheme();
 		} else {
-			$sheme = $this->config->getHttpSheme();
+            $scheme = $this->config->getHttpSheme();
 		}
-		$url = $sheme.'s7.addthis.com/js/250/addthis_widget.js';
+		$url = $scheme.'s7.addthis.com/js/250/addthis_widget.js';
 		if($domIsReady === TRUE) {
 			$url .= '#domready=1';
 		}
